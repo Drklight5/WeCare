@@ -2,6 +2,9 @@ desc datos; // Conocer las filas;
 SELECT * FROM tablaproyectos; //Conocer todos los datos
 UPDATE microcontrolador SET ubicacion = 'SanNico' Where idMicro = 5; // Cambiar datos especificos
 
+
+//INSERTAR LOS DATOS, INICIAR AQUI
+
 INSERT INTO tablaproyectos (nombre, descrip, ubicacion)
 Values
 ('CasaNancy','Automazacion  casa de Nancy','Cancun'),
@@ -30,3 +33,69 @@ Values
 ;
 
 
+//UN DATO POR CADA SENSOR
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data1', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data2', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data3', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data4', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data5', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data6', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data7', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data8', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data9', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data10', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data11', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data12', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data13', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data14', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data15', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data16', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data17', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data18', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data19', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data20', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data1', NOW(), RAND(), 'voltios', idSensores FROM sensores;
+
+INSERT INTO datos (nombre, fecha, dato, unidad, SID)
+SELECT 'data1', NOW(), RAND(), 'voltios', idSensores FROM sensores;
