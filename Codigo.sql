@@ -93,9 +93,3 @@ SELECT 'data19', NOW(), RAND(), 'voltios', idSensores FROM sensores;
 
 INSERT INTO datos (nombre, fecha, dato, unidad, SID)
 SELECT 'data20', NOW(), RAND(), 'voltios', idSensores FROM sensores;
-
-INSERT INTO datos (nombre, fecha, dato, unidad, SID)
-SELECT 'data1', NOW(), RAND(), 'voltios', idSensores FROM sensores;
-
-INSERT INTO datos (nombre, fecha, dato, unidad, SID)
-SELECT 'data1', NOW(), RAND(), 'voltios', idSensores FROM sensores;
