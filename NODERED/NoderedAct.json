@@ -1,0 +1,176 @@
+[
+    {
+        "id": "77f79d4beda192a6",
+        "type": "inject",
+        "z": "829bf043da436afc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "Hello, world!",
+        "payloadType": "str",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "97294886468873d5"
+            ]
+        ]
+    },
+    {
+        "id": "fe071f39a627a802",
+        "type": "debug",
+        "z": "829bf043da436afc",
+        "name": "msg.payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "97294886468873d5",
+        "type": "function",
+        "z": "829bf043da436afc",
+        "name": "Add time to msg",
+        "func": "var dateNow = new Date();\nvar timeAsString = dateNow.toLocaleTimeString();\n\nmsg.payload = msg.payload + ' The time is ' + timeAsString + '.';\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 80,
+        "wires": [
+            [
+                "fe071f39a627a802",
+                "953c52068c14ec4d"
+            ]
+        ]
+    },
+    {
+        "id": "953c52068c14ec4d",
+        "type": "mqtt out",
+        "z": "829bf043da436afc",
+        "name": "MQTT Out Temp y Hum",
+        "topic": "TopicoOutTempIotas",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f7211a33f86fb880",
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3b8c022002be67ac",
+        "type": "mqtt in",
+        "z": "829bf043da436afc",
+        "name": "MQTT In, recibe Temp y HUm",
+        "topic": "TopicoInTempIotas",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f7211a33f86fb880",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "e5b9d4a40bbf3758"
+            ]
+        ]
+    },
+    {
+        "id": "e5b9d4a40bbf3758",
+        "type": "function",
+        "z": "829bf043da436afc",
+        "name": "function 1",
+        "func": "msg.payload = \"Node.RED [\" + msg.payload +  \"].\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "0a45965fa70857f3"
+            ]
+        ]
+    },
+    {
+        "id": "0a45965fa70857f3",
+        "type": "debug",
+        "z": "829bf043da436afc",
+        "name": "msg.payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f7211a33f86fb880",
+        "type": "mqtt-broker",
+        "name": "MQTT 01",
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": "60", 
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
