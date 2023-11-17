@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Menu from './Menu'
+import Resumen from "./Resumen"
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Home() {
@@ -23,15 +24,8 @@ export default function Home() {
 		<div>
 			<Menu></Menu>
 			<div className ="container">
-			Hola
-			{dataSensores.map((sensor) => {
-				return (
-					<div key={sensor.idSensores}>
-						<div>{sensor.nombre}</div>
-					</div>
-				);
-			})}
-		</div>
+				<Resumen></Resumen>
+			</div>
 		</div>
 		    
 	);
