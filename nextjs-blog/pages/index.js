@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Menu from './Menu'
 import Resumen from "./Resumen"
 import 'bootstrap/dist/css/bootstrap.css'
+import Banner from "./Banner";
 
 export default function Home() {
 	const [dataSensores, setdataSensores] = useState([]);
@@ -24,6 +25,7 @@ export default function Home() {
 		<div>
 			<Menu></Menu>
 			<div className ="container">
+				<Banner></Banner>
 				<Resumen></Resumen>
 			</div>
 		</div>

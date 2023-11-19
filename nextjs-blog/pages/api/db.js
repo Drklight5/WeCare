@@ -10,12 +10,12 @@ const db = mysql({
 });
 export default async function excuteQuery({ query, values }) {
   try {
-    console.log("try");
+    //console.log("try");
     const results = await db.query(query, values);
     await db.end();
     return results;
   } catch (error) {
-    console.log("not try");
+    //console.log("not try");
     return { error };
   }
 }
