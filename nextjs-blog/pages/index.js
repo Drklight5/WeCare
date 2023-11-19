@@ -4,12 +4,13 @@ import Menu from './Menu'
 import Resumen from "./Resumen"
 import 'bootstrap/dist/css/bootstrap.css'
 import Banner from "./Banner";
+import useAppContext from "../control/context";
 
 export default function Home() {
-	const [dataSensores, setdataSensores] = useState([]);
+	const [dataSensores, setdataSensores] =  useAppContext();
 
 	async function getPageData() {
-		const apiUrlEndpoint = `http://localhost:3000/api/sensores`;
+		const apiUrlEndpoint = `http://localhost:3000/api/bpm`;
 		const response = await fetch(apiUrlEndpoint);
 		const res = await response.json();
 		console.log(res);

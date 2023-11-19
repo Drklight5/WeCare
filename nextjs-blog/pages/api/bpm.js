@@ -4,7 +4,7 @@ export default async function handler(req, res) {
 try {
     
     const result = await excuteQuery({
-          query: 'SELECT * FROM Sensores;',
+          query: 'SELECT * FROM BPM;',
           values: [req.body.content],
       });
     res.status(200).json(result);
