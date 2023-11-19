@@ -15,7 +15,7 @@ export default async function excuteQuery({ query, values }) {
     await db.end();
     return results;
   } catch (error) {
-    //console.log("not try");
+    console.log(error);
     return { error };
   }
 }

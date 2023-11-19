@@ -8,12 +8,13 @@ import Banner from "./Banner";
 import useAppContext from "../control/context";
 
 export default function Home() {
-	const [dataSensores, setdataSensores] =  useAppContext();
+	const [dataSensores, setdataSensores] =  useState("W");
 
 	async function getPageData() {
-		const apiUrlEndpoint = `http://localhost:3000/api/bpm`;
+		const apiUrlEndpoint = `http://localhost:3000/api/data`;
 		const response = await fetch(apiUrlEndpoint);
 		const res = await response.json();
+		console.log("A");
 		console.log(res);
 		setdataSensores(res);
 	}
@@ -28,8 +29,8 @@ export default function Home() {
 			<Menu></Menu>
 			<div className ="container">
 				<Banner></Banner>
-				<Resumen></Resumen>
-				<Grafica></Grafica>
+				<Resumen data={dataSensores}></Resumen>
+				{/*<Grafica></Grafica>*/}
 			</div>
 		</div>
 		    

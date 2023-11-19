@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from "../styles/Graficas.module.css";
 
@@ -10,20 +11,21 @@ function correcto(a){
   }
 }
 
-function pulso(){
-  var pulso = 70
+function pulso(data){
+
   return(
     <div>
-      <p><span className={styles.big}>{pulso}</span> bpm</p>
-      <p>{correcto(pulso)}</p>
+      <p><span className={styles.big}>{data}</span> bpm</p>
+      <p>{correcto(data)}</p>
     </div>
   )
 }
 
-function Resumen(props) {
-  return (
-    <div>
-      <div className='text-center'>
+function content(data, curr){
+  console.log(data);
+  return (  
+    <div>   
+    <div className='text-center'>
         <h1 className='display-1'>Resumen</h1>
       </div>
       <div className='row justify-content-around'>
@@ -31,7 +33,7 @@ function Resumen(props) {
           <div className={styles.cell}>
             <div className='text-center'>
               <p>Pulso</p>
-              {pulso()}
+              {pulso(data[curr].bpm)}
             </div>
           </div>
         </div>
@@ -42,6 +44,30 @@ function Resumen(props) {
           </div>
         </div>
       </div>
+      <div>{data[curr].time}</div>
+    </div>
+    );
+}
+
+function Resumen({data}) {
+
+  const [curr, setCurr] = useState(0);
+  useEffect(() => {
+    nextRegister();
+    return () => {
+    
+    }
+  }, )
+
+  const nextRegister = ()=>{
+    setTimeout(() => {
+    setCurr(curr + 1);
+    }, 2000);
+  }
+  
+  return (
+    <div>
+      {(data != "W" && data.length > 0) ? content(data, curr) : <div>Waiting</div>}
     </div>
   )
 }
