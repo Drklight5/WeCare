@@ -90,3 +90,14 @@
     flex-direction: column;
   }
 }
+
+
+.title{
+  font-size: 3rem !important;
+  margin-top: 1rem;
+  color: rgb(48, 129, 201);
+}
+
+.body{
+  background-color: aliceblue !important;
+}

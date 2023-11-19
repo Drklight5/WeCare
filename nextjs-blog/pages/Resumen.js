@@ -21,12 +21,25 @@ function pulso(data){
   )
 }
 
+function waiting(){
+  return(
+    <div className='centered bg-warning rounded-3 p-5'>
+      
+      <div className="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span className='px-3'>Esperando información ...</span>
+      
+      </div>
+  );
+}
+
 function content(data, curr){
   console.log(data);
   return (  
     <div>   
     <div className='text-center'>
-        <h1 className='display-1'>Resumen</h1>
+        <h1 className='display-3'>Resumen</h1>
       </div>
       <div className='row justify-content-around'>
         <div className='col-md-6'>
@@ -67,7 +80,7 @@ function Resumen({data}) {
   
   return (
     <div>
-      {(data != "W" && data.length > 0) ? content(data, curr) : <div>Waiting</div>}
+      {(data != "W" && data.length > 0) ? content(data, curr) : waiting()}
     </div>
   )
 }
