@@ -1,0 +1,10 @@
+.cell{
+    background-color: lightblue;
+    border-radius: 20px;
+    padding: 2%;
+    margin: 1%
+}
+
+.big{
+    font-size: 30px;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Menu from './Menu'
 import Resumen from "./Resumen"
+import Grafica from "./Grafica"
 import 'bootstrap/dist/css/bootstrap.css'
 import Banner from "./Banner";
 import useAppContext from "../control/context";
@@ -28,6 +29,7 @@ export default function Home() {
 			<div className ="container">
 				<Banner></Banner>
 				<Resumen></Resumen>
+				<Grafica></Grafica>
 			</div>
 		</div>
 		    
