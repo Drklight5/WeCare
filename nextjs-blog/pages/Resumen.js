@@ -2,6 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from "../styles/Graficas.module.css";
+import Grafica from "./Grafica"
+
+var pulsoRecord = [];
 
 function correcto(a){
   if (80 < a && a < 150){
@@ -36,6 +39,7 @@ function waiting(){
 
 function content(data, curr){
   //console.log(data);
+  pulsoRecord.push(data[curr].bpm);
   return (  
     <div>   
     <div className='text-center'>
@@ -62,6 +66,7 @@ function content(data, curr){
           </div>
         </div>
       </div>
+      <Grafica d={pulsoRecord}></Grafica>
       <div className='text-center my-3'>{data[curr].time}
       <br/>
       <b>Time</b></div>

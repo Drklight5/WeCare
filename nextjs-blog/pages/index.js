@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "../styles/Home.module.css";
 import Menu from './Menu'
 import Resumen from "./Resumen"
-import Grafica from "./Grafica"
 import Banner from "./Banner";
 import useAppContext from "../control/context";
 
