@@ -14,8 +14,8 @@ export default function Home() {
 		const apiUrlEndpoint = `http://localhost:3000/api/data`;
 		const response = await fetch(apiUrlEndpoint);
 		const res = await response.json();
-		console.log("A");
-		console.log(res);
+		//console.log("A");
+		//console.log(res);
 		setdataSensores(res);
 	}
 

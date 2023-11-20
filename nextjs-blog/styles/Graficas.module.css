@@ -2,7 +2,8 @@
     background-color: lightblue;
     border-radius: 20px;
     padding: 2%;
-    margin: 1%
+    margin: 1%;
+    filter:drop-shadow(10px 10px 10px rgba(0,0,0,.15))
 }
 
 .big{

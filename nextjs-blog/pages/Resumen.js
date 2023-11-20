@@ -26,7 +26,7 @@ function waiting(){
     <div className='centered bg-warning rounded-3 p-5'>
       
       <div className="spinner-border text-dark" role="status">
-        <span class="visually-hidden">Loading...</span>
+        <span className="visually-hidden">Loading...</span>
       </div>
       <span className='px-3'>Esperando información ...</span>
       
@@ -35,29 +35,36 @@ function waiting(){
 }
 
 function content(data, curr){
-  console.log(data);
+  //console.log(data);
   return (  
     <div>   
     <div className='text-center'>
         <h1 className='display-3'>Resumen</h1>
       </div>
+
       <div className='row justify-content-around'>
-        <div className='col-md-6'>
+
+        <div className='col-md-6 '>
           <div className={styles.cell}>
             <div className='text-center'>
-              <p>Pulso</p>
+              <p ><b>Pulso</b></p>
               {pulso(data[curr].bpm)}
             </div>
           </div>
         </div>
+
         <div className='col-md-6'>
           <div className={styles.cell}>
-            <p>Oxigenación</p>
-            <p><span className={styles.big}>98</span>%</p>
+            <div className='text-center'>
+              <p><b>Oxigenación</b></p>
+              <p><span className={styles.big}>{Math.floor(Math.random() * (99 - 97) + 96)}</span>%</p>
+            </div>
           </div>
         </div>
       </div>
-      <div>{data[curr].time}</div>
+      <div className='text-center my-3'>{data[curr].time}
+      <br/>
+      <b>Time</b></div>
     </div>
     );
 }
@@ -75,7 +82,7 @@ function Resumen({data}) {
   const nextRegister = ()=>{
     setTimeout(() => {
     setCurr(curr + 1);
-    }, 2000);
+    }, 1000);
   }
   
   return (
