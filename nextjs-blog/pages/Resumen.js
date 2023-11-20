@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from "../styles/Graficas.module.css";
 
@@ -10,110 +11,76 @@ function correcto(a){
   }
 }
 
-function pulso(){
-  var pulso = 70
+function pulso(data){
+
   return(
     <div>
-      <p><span className={styles.big}>{pulso}</span> bpm</p>
-      <p>{correcto(pulso)}</p>
+      <p><span className={styles.big}>{data}</span> bpm</p>
+      <p>{correcto(data)}</p>
     </div>
   )
 }
 
-function correctoO(a){
-  if (96 < a){
-    return("Bien")
-  }else{
-    return("Mal");
-  }
-}
-
-function ox(){
-  var oxi = 98
+function waiting(){
   return(
-    <div>
-      <p><span className={styles.big}>{oxi}</span>%</p>
-      <p>{correctoO(oxi)}</p>
-    </div>
-  )
-}
-
-function correctoT(a){
-  if (30 < a){
-    return("Bien")
-  }else{
-    return("Mal");
-  }
-}
-
-function temp(){
-  var t = 35
-  return(
-    <div>
-      <p><span className={styles.big}>{t}</span>°C</p>
-      <p>{correctoT(t)}</p>
-    </div>
-  )
-}
-
-function volteado(){
-  var t = 0
-  if (t == 0){
-    return(
-      <div>
-        <p>No se encuentra volteado</p>
+    <div className='centered bg-warning rounded-3 p-5'>
+      
+      <div className="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
-    )
-  }
-  return(
-    <div>
-      <p>Peligro: Está volteado</p>
-    </div>
-  )
+      <span className='px-3'>Esperando información ...</span>
+      
+      </div>
+  );
 }
 
-function Resumen(props) {
-  return (
-    <div>
-      <div className='text-center'>
-        <h1 className='display-1'>Resumen</h1>
+function content(data, curr){
+  console.log(data);
+  return (  
+    <div>   
+    <div className='text-center'>
+        <h1 className='display-3'>Resumen</h1>
       </div>
       <div className='row justify-content-around'>
         <div className='col-md-6'>
           <div className={styles.cell}>
             <div className='text-center'>
               <p>Pulso</p>
-              {pulso()}
+              {pulso(data[curr].bpm)}
             </div>
           </div>
         </div>
         <div className='col-md-6'>
           <div className={styles.cell}>
-            <div className='text-center'>
-              <p>Oxigenación</p>
-              {ox()}
-            </div>
+            <p>Oxigenación</p>
+            <p><span className={styles.big}>98</span>%</p>
           </div>
         </div>
       </div>
-      <div className='row justify-content-around'>
-        <div className='col-md-6'>
-          <div className={styles.cell}>
-            <div className='text-center'>
-              <p>Temperatura</p>
-              {temp()}
-            </div>
-          </div>
-        </div>
-        <div className='col-md-6'>
-          <div className={styles.cell}>
-            <div className='text-center'>
-              <p>Posición</p>
-              {volteado()}
-            </div>
-          </div>
-        </div>
-      </div>
+      <div>{data[curr].time}</div>
+    </div>
+    );
+}
+
+function Resumen({data}) {
+
+  const [curr, setCurr] = useState(0);
+  useEffect(() => {
+    nextRegister();
+    return () => {
+    
+    }
+  }, )
+
+  const nextRegister = ()=>{
+    setTimeout(() => {
+    setCurr(curr + 1);
+    }, 2000);
+  }
+  
+  return (
+    <div>
+      {(data != "W" && data.length > 0) ? content(data, curr) : waiting()}
     </div>
   )
 }
