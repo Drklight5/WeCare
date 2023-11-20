@@ -39,7 +39,7 @@ function content(data, curr){
   return (  
     <div>   
     <div className='text-center'>
-        <h1 className='display-3'>Resumen</h1>
+        <h1 className='display-5'>Your baby is sleeping </h1>
       </div>
 
       <div className='row justify-content-around'>
@@ -56,8 +56,8 @@ function content(data, curr){
         <div className='col-md-6'>
           <div className={styles.cell}>
             <div className='text-center'>
-              <p><b>Oxigenación</b></p>
-              <p><span className={styles.big}>{Math.floor(Math.random() * (99 - 97) + 96)}</span>%</p>
+              <p><b>Humedad</b></p>
+              <p><span className={styles.big}>{Math.floor(Math.random() * (30 - 28) + 28)}</span>%</p>
             </div>
           </div>
         </div>
