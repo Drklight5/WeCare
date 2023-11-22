@@ -12,8 +12,7 @@ function LinePlot({
     marginBottom = 20,
     marginLeft = 20
   }) {
-    console.log("aAAAA");
-    console.log(height);
+    width = window.innerWidth * 0.75;
     const x = d3.scaleLinear([0, data.length - 1], [marginLeft, width - marginRight]);
     const y = d3.scaleLinear(d3.extent(data), [height - marginBottom, marginTop]);
     const line = d3.line((d, i) => x(i), y);
@@ -27,16 +26,15 @@ function LinePlot({
     );
   }
 
-function Grafica() {
+function Grafica({d}) {
 
-    const data = [(2, 3), (3, 4), (4, 2)]
-    return (
-      <div>
-        <div className='bg-light p-3'>
-            <LinePlot data={data}/>
-        </div>
+  return (
+    <div>
+      <div className='bg-light p-3'>
+        <LinePlot data={d}/>
       </div>
-    )
+    </div>
+  )
   }
   
   

@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import 'bootstrap/dist/css/bootstrap.css'
+import "../styles/Home.module.css";
 import Menu from './Menu'
 import Resumen from "./Resumen"
-import Grafica from "./Grafica"
-import 'bootstrap/dist/css/bootstrap.css'
 import Banner from "./Banner";
 import useAppContext from "../control/context";
 
 export default function Home() {
-	const [dataSensores, setdataSensores] =  useAppContext();
+	const [dataSensores, setdataSensores] =  useState("W");
 
 	async function getPageData() {
-		const apiUrlEndpoint = `http://localhost:3000/api/bpm`;
+		const apiUrlEndpoint = `http://localhost:3000/api/data`;
 		const response = await fetch(apiUrlEndpoint);
 		const res = await response.json();
-		console.log(res);
+		//console.log("A");
+		//console.log(res);
 		setdataSensores(res);
 	}
 
@@ -25,11 +25,11 @@ export default function Home() {
 
 	return (
 		<div>
-			<Menu></Menu>
+			{/*<Menu></Menu>*/}
 			<div className ="container">
 				<Banner></Banner>
-				<Resumen></Resumen>
-				<Grafica></Grafica>
+				<Resumen data={dataSensores}></Resumen>
+				{/*<Grafica></Grafica>*/}
 			</div>
 		</div>
 		    
