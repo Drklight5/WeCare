@@ -7,7 +7,7 @@ import Dato from "./Dato"
 
 var pulsoRecord = [];
 
-function correcto(a){
+function checkPulso(a){
   if (80 < a && a < 150){
     return(true);
   }else{
@@ -38,7 +38,7 @@ function content(data, curr){
       </div>
 
       <div className='row justify-content-around'>
-        <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={correcto}></Dato>
+        <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
       <div className='text-center my-3'>{data[curr].time}

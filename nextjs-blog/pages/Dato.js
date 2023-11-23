@@ -6,7 +6,7 @@ import styles from "../styles/Graficas.module.css";
 import React, { useState} from 'react'
 
 function Dato({title, dato, evaluate, type}) {
-    const [style, setStyle] = useState("bg-success")
+    const [style, setStyle] = useState("bg-secondary")
 
     function evaluateStyle(){
         evaluate() ?  setStyle("bg-success"): setStyle("bg-danger");
