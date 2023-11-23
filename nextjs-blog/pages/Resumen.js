@@ -72,8 +72,11 @@ function content(data, ambient){
         <Dato title={"Temperatura"} dato={ambient[0].temp} type={"°"} evaluate={checkGiro}></Dato>
         <Dato title={"Humedad"} dato={ambient[0].humedad} type={""} evaluate={checkTemperatura}></Dato>
       </div>
-      <Grafica d={pulsoRecord}></Grafica>
-      <Grafica d={temperaturaRecord}></Grafica>
+      <div>
+        <h1>Ciclo de sueño</h1>
+      </div>
+      <Grafica d={pulsoRecord} title={"Pulso"}></Grafica>
+      <Grafica d={temperaturaRecord} title={"Temperatura"} ></Grafica>
       <div className='text-center my-3'>{data[0].time}
       <br/>
       <b>Time</b></div>

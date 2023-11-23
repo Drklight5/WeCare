@@ -12,6 +12,7 @@ function LinePlot({
     marginBottom = 20,
     marginLeft = 20
   }) {
+
     width = window.innerWidth * 0.75;
     const x = d3.scaleLinear([0, data.length - 1], [marginLeft, width - marginRight]);
     const y = d3.scaleLinear(d3.extent(data), [height - marginBottom, marginTop]);
@@ -26,11 +27,12 @@ function LinePlot({
     );
   }
 
-function Grafica({d}) {
+function Grafica({d, title}) {
 
   return (
     <div>
-      <div className='bg-light p-3'>
+      <div className='bg-light p-3 m-2 rounded shadow'>
+        <h1>{title}</h1>
         <LinePlot data={d}/>
       </div>
     </div>
