@@ -5,7 +5,7 @@ const db = mysql({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: ''
+    database: 'iot_3sem_arduina'
   }
 });
 export default async function excuteQuery({ query, values }) {
