@@ -67,7 +67,7 @@ function Resumen({data}) {
 
   const nextRegister = ()=>{
     setTimeout(() => {
-    setCurr(curr + 1);
+    setCurr(0);
     }, 1000);
   }
   
