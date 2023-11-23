@@ -8,6 +8,7 @@ import useAppContext from "../control/context";
 
 export default function Home() {
 	const [dataSensores, setdataSensores] =  useState("W");
+	const [dataAmbient, setAmbient] = useState("W");
 	const [running, setRunning] = useState(false);
 	const [color, setColor] = useState("btn btn-danger");
 
@@ -18,7 +19,18 @@ export default function Home() {
 		const res = await response.json();
 		console.log("A");
 		//console.log(res);
-		setdataSensores(res);}, 1000);
+		setdataSensores(res);
+
+		const apiUrlEndpoint2 = `http://localhost:3000/api/data2`;
+		const response2 = await fetch(apiUrlEndpoint2);
+		const res2 = await response2.json();
+		console.log("B");
+		//console.log(res);
+		setAmbient(res2);
+	
+	}, 1000);
+
+
 
 	}
 
@@ -40,7 +52,7 @@ export default function Home() {
 				
 				<Banner></Banner>
 				<div className="d-flex flex-column align-items-center mt-5">
-					{running ? <Resumen data={dataSensores}></Resumen>: <span className="fs-5  text-primaryx">The monitor is off</span>}
+					{running ? <Resumen data={dataSensores} ambient={dataAmbient}></Resumen>: <span className="fs-5  text-primaryx">The monitor is off</span>}
 					<div className="my-4 "> 
 						<button className={color} onClick={changeState}>
 							{running ? <span>Turn Off</span>: <span>Turn On</span>}

@@ -40,7 +40,7 @@ function waiting(){
   );
 }
 
-function content(data){
+function content(data, ambient){
   //console.log(data);
   data.forEach((element) =>{
     pulsoRecord.push(element.bpm);
@@ -68,9 +68,9 @@ function content(data){
       </div>
       <div className='row justify-content-around my-5'>
         <h2>Ambient</h2>
-        <Dato title={"Pulso"} dato={data[0].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
-        <Dato title={"Position"} dato={data[0].giro} type={"°"} evaluate={checkGiro}></Dato>
-        <Dato title={"Temperatura"} dato={data[0].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
+        <Dato title={"Infrarrojo"} dato={ambient[0].infra} type={""} evaluate={checkPulso}></Dato>
+        <Dato title={"Temperatura"} dato={ambient[0].temp} type={"°"} evaluate={checkGiro}></Dato>
+        <Dato title={"Humedad"} dato={ambient[0].humedad} type={""} evaluate={checkTemperatura}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
       <Grafica d={temperaturaRecord}></Grafica>
@@ -81,10 +81,10 @@ function content(data){
     );
 }
 
-function Resumen({data}) {
+function Resumen({data, ambient}) {
   return (
     <div>
-      {(data != "W" && data.length > 0) ? content(data) : waiting()}
+      {((data != "W" && data.length > 0) && (ambient != "W" && data.length > 0)) ? content(data,ambient) : waiting()}
     </div>
   )
 }
