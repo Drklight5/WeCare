@@ -6,6 +6,7 @@ import Grafica from "./Grafica"
 import Dato from "./Dato"
 
 var pulsoRecord = [];
+var temperaturaRecord = [];
 
 function correcto(a){
   if (80 < a && a < 150){
@@ -31,6 +32,11 @@ function waiting(){
 function content(data, curr){
   //console.log(data);
   pulsoRecord.push(data[curr].bpm);
+  temperaturaRecord.push(data[curr].temperatura);
+  if (pulsoRecord.length > 20){
+    pulsoRecord.shift();
+    temperaturaRecord.shift();
+  }
   return (  
     <div>   
     <div className='text-center'>
@@ -41,6 +47,7 @@ function content(data, curr){
         <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={correcto}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
+      <Grafica d={temperaturaRecord}></Grafica>
       <div className='text-center my-3'>{data[curr].time}
       <br/>
       <b>Time</b></div>
