@@ -16,6 +16,14 @@ function checkPulso(a){
   }
 }
 
+function checkGiro(dato){
+  return dato == 0 ? true: false;
+}
+
+function checkTemperatura(dato){
+  
+  return ((dato + 8) > 36  && (dato + 8) < 40 ) ? true: false;
+}
 function waiting(){
   return(
     <div className='centered bg-warning rounded-3 p-5'>
@@ -45,6 +53,8 @@ function content(data, curr){
 
       <div className='row justify-content-around'>
         <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
+        <Dato title={"Position"} dato={data[curr].giro} type={"°"} evaluate={checkGiro}></Dato>
+        <Dato title={"Temperatura"} dato={data[curr].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
       <Grafica d={temperaturaRecord}></Grafica>

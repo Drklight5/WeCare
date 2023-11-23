@@ -9,7 +9,7 @@ function Dato({title, dato, evaluate, type}) {
     const [style, setStyle] = useState("bg-secondary")
 
     function evaluateStyle(){
-        evaluate() ?  setStyle("bg-success"): setStyle("bg-danger");
+        evaluate(dato) ?  setStyle("bg-success"): setStyle("bg-danger");
     }
   return (
     <div>
