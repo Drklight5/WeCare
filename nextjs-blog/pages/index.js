@@ -12,12 +12,14 @@ export default function Home() {
 	const [color, setColor] = useState("btn btn-danger");
 
 	async function getPageData() {
+		setTimeout(async () => {
 		const apiUrlEndpoint = `http://localhost:3000/api/data`;
 		const response = await fetch(apiUrlEndpoint);
 		const res = await response.json();
-		//console.log("A");
+		console.log("A");
 		//console.log(res);
-		setdataSensores(res);
+		setdataSensores(res);}, 1000);
+
 	}
 
 	useEffect(() => {

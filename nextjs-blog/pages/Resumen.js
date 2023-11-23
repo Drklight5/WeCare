@@ -37,14 +37,19 @@ function waiting(){
   );
 }
 
-function content(data, curr){
+function content(data){
   //console.log(data);
-  pulsoRecord.push(data[curr].bpm);
-  temperaturaRecord.push(data[curr].temperatura);
+  data.forEach((element) =>{
+    pulsoRecord.push(element.bpm);
+    temperaturaRecord.push(element.temperatura);
+  });
+
   if (pulsoRecord.length > 20){
     pulsoRecord.shift();
     temperaturaRecord.shift();
   }
+
+
   return (  
     <div>   
     <div className='text-center'>
@@ -52,13 +57,13 @@ function content(data, curr){
       </div>
 
       <div className='row justify-content-around'>
-        <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
-        <Dato title={"Position"} dato={data[curr].giro} type={"°"} evaluate={checkGiro}></Dato>
-        <Dato title={"Temperatura"} dato={data[curr].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
+        <Dato title={"Pulso"} dato={data[0].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
+        <Dato title={"Position"} dato={data[0].giro} type={"°"} evaluate={checkGiro}></Dato>
+        <Dato title={"Temperatura"} dato={data[0].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
       <Grafica d={temperaturaRecord}></Grafica>
-      <div className='text-center my-3'>{data[curr].time}
+      <div className='text-center my-3'>{data[0].time}
       <br/>
       <b>Time</b></div>
     </div>
@@ -66,24 +71,9 @@ function content(data, curr){
 }
 
 function Resumen({data}) {
-
-  const [curr, setCurr] = useState(0);
-  useEffect(() => {
-    nextRegister();
-    return () => {
-    
-    }
-  }, )
-
-  const nextRegister = ()=>{
-    setTimeout(() => {
-    setCurr(0);
-    }, 1000);
-  }
-  
   return (
     <div>
-      {(data != "W" && data.length > 0) ? content(data, curr) : waiting()}
+      {(data != "W" && data.length > 0) ? content(data) : waiting()}
     </div>
   )
 }
