@@ -31,7 +31,7 @@ function Grafica({d, title}) {
 
   return (
     <div>
-      <div className='bg-light p-3 m-2 rounded shadow'>
+      <div className='bg-light p-3 m-2 rounded shadow my-5'>
         <h1>{title}</h1>
         <LinePlot data={d}/>
       </div>

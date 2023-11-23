@@ -104,3 +104,10 @@
 #__next{
   background-color: aliceblue !important;
 }
+
+.prender{
+  border-radius: 50%;
+  position: fixed;
+  right:2rem;
+  top:2rem;
+}
