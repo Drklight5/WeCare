@@ -8,6 +8,18 @@ import Dato from "./Dato"
 var pulsoRecord = [];
 var temperaturaRecord = [];
 
+function Row(el) {
+  console.log(el);
+  return (
+    <tr >
+        <td scope="col">{el.time}</td>
+        <td scope="col">{el.bpm}</td>
+        <td scope="col">{el.temperatura}</td>
+        <td scope="col">{el.giro}</td>
+        <td scope="col">{el.sonido}</td>
+    </tr>
+  )
+}
 function checkPulso(a){
   if (80 < a && a < 150){
     return(true);
@@ -72,14 +84,34 @@ function content(data, ambient){
         <Dato title={"Temperatura"} dato={ambient[0].temp} type={"°"} evaluate={checkGiro}></Dato>
         <Dato title={"Humedad"} dato={ambient[0].humedad} type={""} evaluate={checkTemperatura}></Dato>
       </div>
+      
+      <div className='text-center my-3'>{data[0].time}<br/><b>Time</b></div>
+      
       <div>
         <h1>Ciclo de sueño</h1>
+        <Grafica d={pulsoRecord} title={"Pulso"}></Grafica>
+        <Grafica d={temperaturaRecord} title={"Temperatura"} ></Grafica>
       </div>
-      <Grafica d={pulsoRecord} title={"Pulso"}></Grafica>
-      <Grafica d={temperaturaRecord} title={"Temperatura"} ></Grafica>
-      <div className='text-center my-3'>{data[0].time}
-      <br/>
-      <b>Time</b></div>
+
+      <div>
+        <h1>Historial</h1>
+        <table className={"table"}>
+          <thead>
+            <th>Time</th>
+            <th>Pulse</th>
+            <th>Temp</th>
+            <th>Giro</th>
+            <th>Sound</th>
+          </thead>
+          <tbody>
+            {data.map((el) => Row(el))}
+          </tbody>
+        </table>
+
+      </div>
+      
+      
+      
     </div>
     );
 }
