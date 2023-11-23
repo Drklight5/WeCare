@@ -8,6 +8,8 @@ import useAppContext from "../control/context";
 
 export default function Home() {
 	const [dataSensores, setdataSensores] =  useState("W");
+	const [running, setRunning] = useState(false);
+	const [color, setColor] = useState("btn btn-danger");
 
 	async function getPageData() {
 		const apiUrlEndpoint = `http://localhost:3000/api/data`;
@@ -23,13 +25,28 @@ export default function Home() {
 		document.title = 'WeCare';
 	}, []);
 
+	function changeState(){
+		setRunning (!running);
+		running ? setColor("btn btn-danger") : setColor("btn btn-success");
+
+	}
+
 	return (
 		<div>
 			{/*<Menu></Menu>*/}
 			<div className ="container">
+				
 				<Banner></Banner>
-				<Resumen data={dataSensores}></Resumen>
-				{/*<Grafica></Grafica>*/}
+				<div className="d-flex flex-column align-items-center mt-5">
+					{running ? <Resumen data={dataSensores}></Resumen>: <span className="fs-5  text-primaryx">The monitor is off</span>}
+					<div className="my-4 "> 
+						<button className={color} onClick={changeState}>
+							{running ? <span>Turn Off</span>: <span>Turn On</span>}
+						</button>
+					</div>
+				</div>
+				
+				
 			</div>
 		</div>
 		    

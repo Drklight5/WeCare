@@ -8,7 +8,7 @@ var pulsoRecord = [];
 
 function correcto(a){
   if (80 < a && a < 150){
-    return("Bien")
+    return("Bien");
   }else{
     return("Mal");
   }

@@ -2,10 +2,10 @@
 import mysql from 'serverless-mysql';
 const db = mysql({
   config: {
-    host: 'www.db4free.net',
-    user: 'mainroot',
-    password: 'iotas_davagod',
-    database: 'iot_3sem_arduina'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: ''
   }
 });
 export default async function excuteQuery({ query, values }) {
