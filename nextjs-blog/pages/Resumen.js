@@ -21,8 +21,11 @@ function checkGiro(dato){
 }
 
 function checkTemperatura(dato){
-  
   return ((dato + 8) > 36  && (dato + 8) < 40 ) ? true: false;
+}
+
+function checkSonido(dato){
+  return (dato < 510 ) ? true: false;
 }
 function waiting(){
   return(
@@ -56,7 +59,15 @@ function content(data){
         <h1 className='display-5'>Your baby is sleeping </h1>
       </div>
 
-      <div className='row justify-content-around'>
+      <div className='row justify-content-around my-5'>
+        <h2>Baby</h2>
+        <Dato title={"Pulso"} dato={data[0].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
+        <Dato title={"Position"} dato={data[0].giro} type={"°"} evaluate={checkGiro}></Dato>
+        <Dato title={"Temperatura"} dato={data[0].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
+        <Dato title={"Ruido"} dato={data[0].sonido} type={""} evaluate={checkSonido}></Dato> 
+      </div>
+      <div className='row justify-content-around my-5'>
+        <h2>Ambient</h2>
         <Dato title={"Pulso"} dato={data[0].bpm} type={"bpm"} evaluate={checkPulso}></Dato>
         <Dato title={"Position"} dato={data[0].giro} type={"°"} evaluate={checkGiro}></Dato>
         <Dato title={"Temperatura"} dato={data[0].temperatura} type={"°"} evaluate={checkTemperatura}></Dato>
