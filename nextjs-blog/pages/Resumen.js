@@ -3,25 +3,16 @@ import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from "../styles/Graficas.module.css";
 import Grafica from "./Grafica"
+import Dato from "./Dato"
 
 var pulsoRecord = [];
 
 function correcto(a){
   if (80 < a && a < 150){
-    return("Bien");
+    return(true);
   }else{
-    return("Mal");
+    return(false);
   }
-}
-
-function pulso(data){
-
-  return(
-    <div>
-      <p><span className={styles.big}>{data}</span> bpm</p>
-      <p>{correcto(data)}</p>
-    </div>
-  )
 }
 
 function waiting(){
@@ -47,24 +38,7 @@ function content(data, curr){
       </div>
 
       <div className='row justify-content-around'>
-
-        <div className='col-md-6 '>
-          <div className={styles.cell}>
-            <div className='text-center'>
-              <p ><b>Pulso</b></p>
-              {pulso(data[curr].bpm)}
-            </div>
-          </div>
-        </div>
-
-        <div className='col-md-6'>
-          <div className={styles.cell}>
-            <div className='text-center'>
-              <p><b>Humedad</b></p>
-              <p><span className={styles.big}>{Math.floor(Math.random() * (30 - 28) + 28)}</span>%</p>
-            </div>
-          </div>
-        </div>
+        <Dato title={"Pulso"} dato={data[curr].bpm} type={"bpm"} evaluate={correcto}></Dato>
       </div>
       <Grafica d={pulsoRecord}></Grafica>
       <div className='text-center my-3'>{data[curr].time}
