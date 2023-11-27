@@ -4,7 +4,7 @@ const db = mysql({
   config: {
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'Vale',
     database: 'iot_3sem_arduina'
   }
 });
